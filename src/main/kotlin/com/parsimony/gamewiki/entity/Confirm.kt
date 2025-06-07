@@ -28,18 +28,10 @@ data class Confirm(
     @JoinColumn(name = "user_id", nullable = false)
     val user: User,
 
-    // WikiSection 또는 Guide 중 하나와 연관 (선택적)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "wiki_section_id")
     val wikiSection: WikiSection? = null,
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "guide_id")
-    val guide: Guide? = null
 ) {
-    init {
-        require((wikiSection != null) xor (guide != null)) {
-            "Confirm must be associated with either WikiSection or Guide, but not both"
-        }
-    }
+
 }

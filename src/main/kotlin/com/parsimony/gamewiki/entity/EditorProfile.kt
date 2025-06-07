@@ -30,8 +30,4 @@ data class EditorProfile(
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     val user: User,
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "featured_guide_id")
-    val featuredGuide: Guide? = null
 )
